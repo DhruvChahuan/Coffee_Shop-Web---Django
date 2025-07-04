@@ -1,0 +1,115 @@
+{% extends "layout.html" %} {% block title %} About Page {% endblock title %}
+;{% block body %}
+
+<!-- About Section -->
+<div>
+  <section id="about" class="py-20 coffee-beans-bg relative">
+    <div class="absolute inset-0 bg-white/90"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <div class="relative">
+            <img
+              src="../../static/shopImg.jpg"
+              alt="Coffee shop interior"
+              class="rounded-2xl shadow-2xl"
+            />
+            <div
+              class="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-amber-600 to-amber-700 rounded-2xl flex items-center justify-center shadow-xl"
+            >
+              <div class="text-center text-white">
+                <div class="text-2xl font-bold">8+</div>
+                <div class="text-sm">Years</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <h2 class="text-5xl font-bold heading-font text-gray-800 mb-6">
+            Our Story
+          </h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-amber-600 to-amber-700 mb-8"
+          ></div>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            Founded in 2015, Brew & Bean started as a small neighborhood coffee
+            shop with a big dream: to bring the world's finest coffee to our
+            community. We source our beans directly from farmers, ensuring fair
+            trade and the highest quality.
+          </p>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Our passionate baristas craft each cup with precision and care,
+            creating not just a beverage, but an experience. We believe that
+            great coffee brings people together, and our cozy atmosphere
+            reflects that philosophy.
+          </p>
+          <div class="grid grid-cols-3 gap-6">
+            <div class="text-center p-4 bg-white/80 rounded-xl shadow-lg">
+              <div class="text-3xl font-bold heading-font text-amber-600 mb-2">
+                50+
+              </div>
+              <div class="text-gray-600 font-medium">Coffee Varieties</div>
+            </div>
+            <div class="text-center p-4 bg-white/80 rounded-xl shadow-lg">
+              <div class="text-3xl font-bold heading-font text-amber-600 mb-2">
+                10k+
+              </div>
+              <div class="text-gray-600 font-medium">Happy Customers</div>
+            </div>
+            <div class="text-center p-4 bg-white/80 rounded-xl shadow-lg">
+              <div class="text-3xl font-bold heading-font text-amber-600 mb-2">
+                15
+              </div>
+              <div class="text-gray-600 font-medium">Countries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="w-full mx-auto p-6 bg-white rounded-2xl shadow-xl space-y-10">
+  <!-- Owner Details -->
+  {% for staff in staff %} {% if staff.role == 'Manager' and staff.profile %}
+  <div class="flex flex-col items-center text-center">
+    <img
+      src="{{ staff.profile.url }}"
+      alt="owner"
+      class="w-32 h-32 rounded-full border-4 border-yellow-400 shadow-md object-cover"
+    />
+    <h2 class="text-2xl font-bold text-gray-800 mt-4">
+      {{ staff.first_name }} {{ staff.last_name }}
+    </h2>
+    <p class="text-gray-600 text-sm">📧 {{ staff.email }}</p>
+    <p class="text-gray-600 text-sm">📞 {{ staff.mobile_no }}</p>
+  </div>
+  {% endif %} {% endfor %}
+
+  <!-- Staff Section -->
+  <div>
+    <h3 class="text-xl font-semibold text-gray-700 mb-6 text-center">
+      Our Amazing Team
+    </h3>
+    <div class="grid gap-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+      <!-- Staff 1 -->
+      {% for staff in staff %} {% if staff.role == 'Employee' %}
+
+      <div
+        class="flex flex-col items-center bg-gray-50 p-5 rounded-xl shadow-sm hover:shadow-md transition"
+      >
+        <img
+          src={{staff.profile.url}}
+          alt="Staff 1"
+          class="w-24 h-24 rounded-full object-cover border-2 border-gray-300 mb-3"
+        />
+        <h4 class="font-semibold text-gray-800">{{staff.first_name}}  {{staff.last_name}}</h4>
+        <p class="text-sm text-gray-500">📞 {{staff.mobile_no}}</p>
+      </div>
+
+      {% endif %} {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

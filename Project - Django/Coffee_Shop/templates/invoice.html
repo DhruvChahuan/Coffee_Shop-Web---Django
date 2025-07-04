@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .invoice-box {
+      max-width: 800px;
+      margin: auto;
+      border: 1px solid #eee;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .invoice-details, .customer-details {
+      margin-bottom: 20px;
+    }
+
+    .invoice-details table,
+    .customer-details table,
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .invoice-details td, 
+    .customer-details td,
+    .order-table th, 
+    .order-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .order-table th {
+      background-color: #f4f4f4;
+      text-align: left;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice-box">
+    <h1>☕ Techno Cafe</h1>
+
+    <!-- Invoice and Customer Info -->
+    <div class="invoice-details">
+      <table>
+        <tr>
+          <td><strong>Invoice Date:</strong> {{ Order.Order_date|date:"Y-m-d H:i" }}</td>
+          <td><strong>Invoice No:</strong> #{{ Order.id }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="customer-details">
+      <table>
+        <tr>
+          <td><strong>Customer Name:</strong> {{ Order.user.name }}</td>
+          <td><strong>Email:</strong> {{ Order.user.email }}</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile:</strong> {{ Order.user.mobile_no }}</td>
+          <td><strong>Address:</strong> {{ Order.user.address }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Ordered Items -->
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Coffee</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ Order.coffee.name }}</td>
+          <td>{{ Order.quantity }}</td>
+          <td>₹ {{ Order.coffee.price }}</td>
+          <td>₹ {{ Order.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Total -->
+    <p class="total">Grand Total: ₹ {{ Order.price }}</p>
+  </div>
+</body>
+</html>

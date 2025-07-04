@@ -1,0 +1,154 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        Layout
+        {% endblock title %}
+    </title>
+    {% tailwind_css %}
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static "styles/style.css" %}>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-30 border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="bg-gradient-to-r from-amber-600 to-amber-700 p-2 rounded-lg mr-3">
+                            <i data-lucide="coffee" class="h-6 w-6 text-white"></i>
+                        </div>
+                        <span class="text-2xl font-bold heading-font gradient-text">Techno Caffee</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="/" class="text-gray-800 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-all duration-300 relative group">
+                            Home
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="/coffee/manu" class="text-gray-800 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-all duration-300 relative group">
+                            Menu
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="/coffee/about" class="text-gray-800 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-all duration-300 relative group">
+                            About
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="/coffee/contact" class="text-gray-800 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-all duration-300 relative group">
+                            Register 
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        
+                        <a href="/coffee/ordernow" class="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-2 rounded-full text-sm font-medium hover:from-amber-700 hover:to-amber-800 transition-all duration-300 transform hover:scale-105 shadow-lg">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button and cart -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="mobile-menu-button" class="text-gray-800 hover:text-amber-600 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-amber-100">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="block text-gray-800 hover:text-amber-600 px-3 py-2 text-base font-medium transition-colors">Home</a>
+                <a href="/coffee/manu" class="block text-gray-800 hover:text-amber-600 px-3 py-2 text-base font-medium transition-colors">Menu</a>
+                <a href="/coffee/about" class="block text-gray-800 hover:text-amber-600 px-3 py-2 text-base font-medium transition-colors">About</a>
+                <a href="/coffee/contact" class="block text-gray-800 hover:text-amber-600 px-3 py-2 text-base font-medium transition-colors">Register</a>
+                <a href="/coffee/ordernow" class="block bg-gradient-to-r from-amber-600 to-amber-700 text-white px-3 py-2 text-base font-medium rounded-lg mx-3 text-center transition-all">Order Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        {% block body %}{% endblock body %}
+    </div>
+
+
+        <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gradient-to-r from-amber-600 to-amber-700 p-2 rounded-lg mr-3">
+                            <i data-lucide="coffee" class="h-6 w-6 text-white"></i>
+                        </div>
+                        <span class="text-2xl font-bold heading-font">Techno Cafe</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed max-w-md">
+                        Crafting exceptional coffee experiences since 2015. Join us for the perfect cup and discover the world of premium coffee.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-700 hover:bg-amber-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+                            <i data-lucide="facebook" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-amber-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+                            <i data-lucide="instagram" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-amber-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+                            <i data-lucide="twitter" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-amber-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+                            <i data-lucide="youtube" class="h-5 w-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold heading-font mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">Home</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">Menu</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">Contact</a></li>
+                        <li><a href="#order" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">Order Online</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold heading-font mb-6">Contact Info</h3>
+                    <div class="space-y-3 text-gray-400">
+                        <p class="flex items-center">
+                            <i data-lucide="map-pin" class="h-4 w-4 mr-2 text-amber-400"></i>
+                            123 Coffee Street, Bean City
+                        </p>
+                        <p class="flex items-center">
+                            <i data-lucide="phone" class="h-4 w-4 mr-2 text-amber-400"></i>
+                            (555) 123-4567
+                        </p>
+                        <p class="flex items-center">
+                            <i data-lucide="mail" class="h-4 w-4 mr-2 text-amber-400"></i>
+                            hello@brewandbean.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Brew & Bean. All rights reserved. Made with ❤️ and lots of coffee.</p>
+            </div>
+        </div>
+    </footer>
+
+        <script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+        
+<script src={% static "scripts/script.js" %}></script>
+</body>
+</html>
